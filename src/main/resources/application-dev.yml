@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    gcp:
+      sql:
+        database-name: bharath-bazar-dev
+        instance-connection-name: bharath-bazar-2026:asia-south1:bharath-bazar-postgresql
+  datasource:
+    username: a_bharath_bazar
+    password: fk&x9"M26yA/pbi%
+  jpa:
+    hibernate:
+      ddl-auto: update #validate
+    show-sql: true
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/desi_bazar_db
+#    username: Rajashekar
+#    password: Uday1406@
+jwt:
+  secure-cookie: false
+gcp:
+  project-id: bharath-bazar-2026
+gcp-storage:
+  bucket-name: upnakart-npe-dev
+
