@@ -1,0 +1,151 @@
+<div class="signup-wrapper d-flex align-items-center justify-content-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- wider column so text does not break vertically -->
+        <div class="col-10 col-md-8 col-lg-6">
+  
+          <!-- Success Alert -->
+          <div class="alert alert-success alert-dismissible fade show"
+               *ngIf="successMessage"
+               role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            Account created successfully for {{ userData?.username }}!
+            <button type="button" class="btn-close" (click)="successMessage = false"></button>
+          </div>
+  
+          <div class="card signup-card p-4 p-md-5">
+            <div class="text-center mb-4">
+              <i class="bi bi-person-plus-fill text-primary fs-1 mb-2"></i>
+              <h2 class="signup-title mb-1">Create Account</h2>
+            </div>
+  
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
+              <!-- Username -->
+              <div class="form-floating mb-3">
+                <input type="text"
+                       class="form-control"
+                       id="username"
+                       formControlName="username"
+                       placeholder="Username"
+                       [class.is-invalid]="submitted && f['username']?.errors"
+                       [class.is-valid]="!submitted && f['username']?.valid">
+                <label for="username">
+                  <i class="bi bi-person me-2"></i>Username
+                </label>
+                <div *ngIf="submitted && f['username']?.errors">
+                  <div class="invalid-feedback d-block"
+                       *ngIf="$any(f['username'].errors)?.['required']">
+                    Username is required.
+                  </div>
+                  <div class="invalid-feedback d-block"
+                       *ngIf="$any(f['username'].errors)?.['minlength']">
+                    Minimum 3 characters.
+                  </div>
+                  <div class="invalid-feedback d-block"
+                       *ngIf="$any(f['username'].errors)?.['maxlength']">
+                    Maximum 20 characters.
+                  </div>
+                  <div class="invalid-feedback d-block"
+                       *ngIf="$any(f['username'].errors)?.['pattern']">
+                    Only letters, numbers and underscore allowed.
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Mobile -->
+              <div class="form-floating mb-3">
+                <input type="tel"
+                       class="form-control"
+                       id="mobile"
+                       formControlName="mobile"
+                       placeholder="Mobile"
+                       [class.is-invalid]="submitted && f['mobile']?.errors"
+                       [class.is-valid]="!submitted && f['mobile']?.valid">
+                <label for="mobile">
+                  <i class="bi bi-phone me-2"></i>Mobile Number
+                </label>
+                <div *ngIf="submitted && f['mobile']?.errors">
+                  <div class="invalid-feedback d-block"
+                       *ngIf="$any(f['mobile'].errors)?.['required']">
+                    Mobile number is required.
+                  </div>
+                  <div class="invalid-feedback d-block"
+                       *ngIf="$any(f['mobile'].errors)?.['pattern']">
+                    Enter a valid 10‑digit mobile number.
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Email -->
+              <div class="form-floating mb-3">
+                <input type="email"
+                       class="form-control"
+                       id="email"
+                       formControlName="email"
+                       placeholder="name@example.com"
+                       [class.is-invalid]="submitted && f['email']?.errors"
+                       [class.is-valid]="!submitted && f['email']?.valid">
+                <label for="email">
+                  <i class="bi bi-envelope me-2"></i>Email Address
+                </label>
+                <div *ngIf="submitted && f['email']?.errors">
+                  <div class="invalid-feedback d-block"
+                       *ngIf="$any(f['email'].errors)?.['required']">
+                    Email is required.
+                  </div>
+                  <div class="invalid-feedback d-block"
+                       *ngIf="$any(f['email'].errors)?.['email']">
+                    Please enter a valid email address.
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Password -->
+              <div class="form-floating mb-4">
+                <input type="password"
+                       class="form-control"
+                       id="password"
+                       formControlName="password"
+                       placeholder="Password"
+                       [class.is-invalid]="submitted && f['password']?.errors"
+                       [class.is-valid]="!submitted && f['password']?.valid">
+                <label for="password">
+                  <i class="bi bi-lock me-2"></i>Password
+                </label>
+                <div *ngIf="submitted && f['password']?.errors">
+                  <div class="invalid-feedback d-block"
+                       *ngIf="$any(f['password'].errors)?.['required']">
+                    Password is required.
+                  </div>
+                  <div class="invalid-feedback d-block"
+                       *ngIf="$any(f['password'].errors)?.['minlength']">
+                    Password must be at least 6 characters.
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Submit -->
+              <button type="submit"
+                      class="btn btn-signup w-100 text-white mb-3"
+                      [disabled]="signupForm.invalid && submitted" (click)="productService.toggleProducts.set(false)">
+                <i class="bi bi-check-circle me-2"></i>
+                Sign Up
+              </button>
+  
+              <!-- Login link -->
+              <div class="text-center">
+                <p class="text-muted mb-0">
+                  Already have an account?
+                  <a routerLink="/login" class="text-decoration-none fw-semibold text-primary" (click)="productService.toggleProducts.set(false)">
+                    Sign in here
+                  </a>
+                </p>
+              </div>
+            </form>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  

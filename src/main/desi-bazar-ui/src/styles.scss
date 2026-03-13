@@ -1,0 +1,47 @@
+/* src/styles.scss */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px; /* Adjust as needed */
+    background: #333;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+  }
+  
+  .main-content {
+    margin-top: 60px; /* Match navbar height */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 60px; /* Match footer height */
+  }
+  
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px; /* Adjust as needed */
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  

@@ -1,0 +1,77 @@
+<div class="signin-wrapper d-flex align-items-center justify-content-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4">
+
+        <div class="card signin-card p-4 p-md-5">
+          <div class="text-center mb-4">
+            <i class="bi bi-box-arrow-in-right text-primary fs-1 mb-2"></i>
+            <h2 class="signin-title mb-1">Login</h2>
+            <p class="text-muted mb-0" >Welcome back! Please sign in.</p>
+            <div>
+              @if (errorMessage.trim().length>0) {
+                <p class="text-muted mb-0" style="color: red !important;">{{errorMessage}}</p>
+              }
+            </div>
+          </div>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+
+            <!-- Email -->
+            <div class="form-floating mb-3">
+              <input type="email"
+                     class="form-control"
+                     id="email"
+                     formControlName="email"
+                     placeholder="name@example.com"
+                     [class.is-invalid]="submitted && loginForm.get('email')?.invalid">
+              <label for="email">
+                <i class="bi bi-envelope me-2"></i>Email
+              </label>
+              <div *ngIf="submitted && loginForm.get('email')?.invalid"
+                   class="invalid-feedback d-block">
+                Valid email is required.
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-floating mb-4">
+              <input type="password"
+                     class="form-control"
+                     id="password"
+                     formControlName="password"
+                     placeholder="Password"
+                     [class.is-invalid]="submitted && loginForm.get('password')?.invalid">
+              <label for="password">
+                <i class="bi bi-lock me-2"></i>Password
+              </label>
+              <div *ngIf="submitted && loginForm.get('password')?.invalid"
+                   class="invalid-feedback d-block">
+                Password is required.
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit"
+                    class="btn btn-signin w-100 text-white mb-3"
+                    [disabled]="loginForm.invalid && submitted" (click)="productService.toggleProducts.set(true)">
+              <i class="bi bi-box-arrow-in-right me-2"></i>
+              Login
+            </button>
+
+            <!-- Link -->
+            <div class="text-center">
+              <p class="text-muted mb-0">
+                Don't have an account?
+                <a routerLink="/signup" class="text-decoration-none fw-semibold text-primary" (click)="productService.toggleProducts.set(false)">
+                  Sign up here
+                </a>
+              </p>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<li class="nav-item dropdown">
+    @if (sessionStatus()) {
+        <!-- Active Session -->
+        <a class="nav-link dropdown-toggle" (click)="toggleProfileDropdown($event)">
+          <span class="session-active">🟢</span>
+          <i class="fas fa-user me-1"></i> Profile
+        </a>
+      } @else {
+        <!-- Inactive Session -->
+        <a class="nav-link" routerLink="/login">
+          <span class="session-inactive">🔴</span>
+          <i class="fas fa-user me-1"></i> Login
+        </a>
+      }
+
+    @if (showProfilePreview() && currentUser(); as user) {
+    <div class="dropdown-menu profile-preview show">
+        <div class="dropdown-header">
+            <img src="assets/images/image.jpg" class="profile-preview-img" title="image.jpg">
+            <div>
+                <h6 class="mb-0 fw-bold">{{ user.username }}</h6>
+                <small class="text-muted">{{ user.email }}</small>
+                <br><span class="badge bg-primary mt-1">{{ user.role }}</span>
+            </div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="viewProfile()">
+            <i class="fas fa-user-circle me-2"></i>View Full Profile
+        </a>
+        <a class="dropdown-item" (click)="editProfile()">
+            <i class="fas fa-user-circle me-2"></i>Edit Profile
+        </a>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item text-danger" (click)="logout()">
+            <i class="fas fa-sign-out-alt me-2"></i>Logout
+        </button>
+    </div>
+    }
+</li>
