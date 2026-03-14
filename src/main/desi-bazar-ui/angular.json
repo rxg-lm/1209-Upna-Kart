@@ -83,6 +83,12 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+            },
+            "local": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -95,6 +101,9 @@
             },
             "development": {
               "buildTarget": "desi-bazar-ui:build:development"
+            },
+            "local": {
+              "buildTarget": "desi-bazar-ui:build:local"
             }
           },
           "defaultConfiguration": "development"

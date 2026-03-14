@@ -2,4 +2,4 @@ spring:
   application:
     name: desi-bazar
   profiles:
-    active: dev
+    active: local

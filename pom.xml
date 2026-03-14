@@ -59,6 +59,11 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
@@ -238,17 +243,32 @@
     <profiles>
         <profile>
             <id>dev</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <angular.profile>development</angular.profile>
             </properties>
         </profile>
         <profile>
             <id>prod</id>
+            <activation>
+                <property>
+                    <name>spring.profiles.active</name>
+                    <value>prod</value>
+                </property>
+            </activation>
             <properties>
                 <angular.profile>production</angular.profile>
+            </properties>
+        </profile>
+        <profile>
+            <id>local</id>
+            <activation>
+                <property>
+                    <name>spring.profiles.active</name>
+                    <value>local</value>
+                </property>
+            </activation>
+            <properties>
+                <angular.profile>local</angular.profile>
             </properties>
         </profile>
     </profiles>
